@@ -2,12 +2,19 @@ package com.example.hacktm.ONG.ongapp.user;
 
 import com.example.hacktm.ONG.ongapp.tickets.Ticket;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue
     private Integer id;
 
     @Size(min=2 , message ="Name should contain at least 2 characters")
@@ -15,6 +22,7 @@ public class User {
 
     private Integer age;
 
+    @OneToMany(mappedBy="user")
     private List<Ticket> tickets = new ArrayList<>();
 
     public User(){

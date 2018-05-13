@@ -1,10 +1,19 @@
 package com.example.hacktm.ONG.ongapp.tickets;
 
 import com.example.hacktm.ONG.ongapp.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+
+@Entity
 public class Ticket{
+
+    @Id
+    @GeneratedValue
     private Integer id;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JsonIgnore
     private User user;
 
     public Ticket(Integer id, User user) {
